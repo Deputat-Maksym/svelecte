@@ -1,0 +1,238 @@
+export function addFormatter(name: any, formatFn: any): void;
+export const config: {
+    disabled: boolean;
+    valueField: any;
+    labelField: any;
+    groupLabelField: string;
+    groupItemsField: string;
+    disabledField: string;
+    placeholder: string;
+    valueAsObject: boolean;
+    searchable: boolean;
+    clearable: boolean;
+    highlightFirstItem: boolean;
+    selectOnTab: any;
+    resetOnBlur: boolean;
+    resetOnSelect: boolean;
+    fetchResetOnBlur: boolean;
+    multiple: boolean;
+    closeAfterSelect: boolean;
+    max: number;
+    collapseSelection: boolean;
+    alwaysCollapsed: boolean;
+    creatable: boolean;
+    creatablePrefix: string;
+    keepCreated: boolean;
+    allowEditing: boolean;
+    delimiter: string;
+    fetchCallback: any;
+    minQuery: number;
+    lazyDropdown: boolean;
+    virtualList: boolean;
+    vlItemSize: any;
+    vlHeight: any;
+    i18n: {
+        empty: string;
+        nomatch: string;
+        max: (num: any) => string;
+        fetchBefore: string;
+        fetchQuery: (minQuery: any, inputLength: any) => string;
+        fetchInit: string;
+        fetchEmpty: string;
+        collapsedSelection: (count: any) => string;
+        createRowLabel: (value: any) => string;
+    };
+    collapseSelectionFn: (selectionCount: any, selection: any) => any;
+};
+export const TAB_SELECT_NAVIGATE: "select-navigate";
+/** @typedef {typeof __propDef.props}  SvelecteProps */
+/** @typedef {typeof __propDef.events}  SvelecteEvents */
+/** @typedef {typeof __propDef.slots}  SvelecteSlots */
+export default class Svelecte extends SvelteComponentTyped<{
+    options?: any[];
+    style?: any;
+    value?: any;
+    name?: string;
+    focus?: (event: any) => void;
+    inputId?: any;
+    searchable?: boolean;
+    disabled?: boolean;
+    multiple?: boolean;
+    clearable?: boolean;
+    renderer?: any;
+    placeholder?: string;
+    resetOnBlur?: boolean;
+    collapseSelection?: boolean;
+    alwaysCollapsed?: boolean;
+    dndzone?: () => {
+        noop: boolean;
+        destroy: () => void;
+    };
+    lazyDropdown?: boolean;
+    creatable?: boolean;
+    disableHighlight?: boolean;
+    virtualList?: boolean;
+    vlItemSize?: any;
+    vlHeight?: any;
+    disabledField?: string;
+    required?: boolean;
+    hasAnchor?: boolean;
+    valueField?: any;
+    labelField?: any;
+    groupLabelField?: string;
+    groupItemsField?: string;
+    highlightFirstItem?: boolean;
+    selectOnTab?: any;
+    resetOnSelect?: boolean;
+    closeAfterSelect?: boolean;
+    validatorAction?: any;
+    dropdownItem?: typeof Item;
+    controlItem?: typeof Item;
+    max?: number;
+    creatablePrefix?: string;
+    allowEditing?: boolean;
+    keepCreated?: boolean;
+    delimiter?: string;
+    createFilter?: typeof defaultCreateFilter;
+    createTransform?: any;
+    fetch?: any;
+    fetchMode?: string;
+    fetchCallback?: any;
+    fetchResetOnBlur?: boolean;
+    minQuery?: number;
+    searchField?: any;
+    sortField?: any;
+    disableSifter?: boolean;
+    class?: string;
+    i18n?: any;
+    readSelection?: any;
+    labelAsValue?: boolean;
+    valueAsObject?: boolean;
+    parentValue?: any;
+    getSelection?: (onlyValues: any) => any;
+    setSelection?: (selection: any, triggerChangeEvent: any) => void;
+    clearByParent?: (doDisable: any, triggerChangeEvent: any) => void;
+}, {
+    blur: CustomEvent<any>;
+    createoption: CustomEvent<any>;
+    fetch: CustomEvent<any>;
+    change: CustomEvent<any>;
+    invalidValue: CustomEvent<any>;
+    enterKey: CustomEvent<any>;
+} & {
+    [evt: string]: CustomEvent<any>;
+}, {
+    icon: {};
+    'control-end': {};
+    'indicator-icon': {
+        slot: string;
+        hasDropdownOpened: any;
+    };
+    'clear-icon': {
+        slot: string;
+        selectedOptions: any;
+        inputValue: string;
+    };
+}> {
+    get focus(): (event: any) => void;
+    get getSelection(): (onlyValues: any) => any;
+    get setSelection(): (selection: any, triggerChangeEvent: any) => void;
+    get clearByParent(): (doDisable: any, triggerChangeEvent: any) => void;
+}
+export type SvelecteProps = typeof __propDef.props;
+export type SvelecteEvents = typeof __propDef.events;
+export type SvelecteSlots = typeof __propDef.slots;
+import Item from './components/Item.svelte';
+import { defaultCreateFilter } from './lib/utils.js';
+import { SvelteComponentTyped } from "svelte";
+declare const __propDef: {
+    props: {
+        options?: any[];
+        style?: any;
+        value?: any;
+        name?: string;
+        focus?: (event: any) => void;
+        inputId?: any;
+        searchable?: boolean;
+        disabled?: boolean;
+        multiple?: boolean;
+        clearable?: boolean;
+        renderer?: any;
+        placeholder?: string;
+        resetOnBlur?: boolean;
+        collapseSelection?: boolean;
+        alwaysCollapsed?: boolean;
+        dndzone?: () => {
+            noop: boolean;
+            destroy: () => void;
+        };
+        lazyDropdown?: boolean;
+        creatable?: boolean;
+        disableHighlight?: boolean;
+        virtualList?: boolean;
+        vlItemSize?: any;
+        vlHeight?: any;
+        disabledField?: string;
+        required?: boolean;
+        hasAnchor?: boolean;
+        valueField?: any;
+        labelField?: any;
+        groupLabelField?: string;
+        groupItemsField?: string;
+        highlightFirstItem?: boolean;
+        selectOnTab?: any;
+        resetOnSelect?: boolean;
+        closeAfterSelect?: boolean;
+        validatorAction?: any;
+        dropdownItem?: typeof Item;
+        controlItem?: typeof Item;
+        max?: number;
+        creatablePrefix?: string;
+        allowEditing?: boolean;
+        keepCreated?: boolean;
+        delimiter?: string;
+        createFilter?: typeof defaultCreateFilter;
+        createTransform?: any;
+        fetch?: any;
+        fetchMode?: string;
+        fetchCallback?: any;
+        fetchResetOnBlur?: boolean;
+        minQuery?: number;
+        searchField?: any;
+        sortField?: any;
+        disableSifter?: boolean;
+        class?: string;
+        i18n?: any;
+        readSelection?: any;
+        labelAsValue?: boolean;
+        valueAsObject?: boolean;
+        parentValue?: any;
+        getSelection?: (onlyValues: any) => any;
+        setSelection?: (selection: any, triggerChangeEvent: any) => void;
+        clearByParent?: (doDisable: any, triggerChangeEvent: any) => void;
+    };
+    events: {
+        blur: CustomEvent<any>;
+        createoption: CustomEvent<any>;
+        fetch: CustomEvent<any>;
+        change: CustomEvent<any>;
+        invalidValue: CustomEvent<any>;
+        enterKey: CustomEvent<any>;
+    } & {
+        [evt: string]: CustomEvent<any>;
+    };
+    slots: {
+        icon: {};
+        'control-end': {};
+        'indicator-icon': {
+            slot: string;
+            hasDropdownOpened: any;
+        };
+        'clear-icon': {
+            slot: string;
+            selectedOptions: any;
+            inputValue: string;
+        };
+    };
+};
+export {};
