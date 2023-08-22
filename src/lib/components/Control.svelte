@@ -94,7 +94,7 @@
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="sv-control" class:is-active={$hasFocus} class:is-disabled={disabled}
+<div class="sv-control form-select" class:is-active={$hasFocus} class:is-disabled={disabled}
 on:mousedown={focusControl}
 >
   <slot name="icon"></slot>
@@ -105,14 +105,14 @@ on:mousedown={focusControl}
         {@html collapseSelection(selectedOptions.length, selectedOptions) }
       {:else}
         {#each selectedOptions as opt (opt[currentValueField])}
-        <div animate:flip={{duration: flipDurationMs }}>
+        <div class="sv-content-inner" animate:flip={{duration: flipDurationMs }}>
           <svelte:component this={itemComponent} formatter={renderer} item={opt} isSelected={true} on:deselect isMultiple={multiple} inputValue={$inputValue}/>
         </div>
         {/each}
       {/if}
     {/if}
     <!-- input -->
-    <Input {disabled} {searchable} {placeholder} {multiple} {inputId}
+    <Input {disabled} {searchable} {multiple} {inputId}
       {inputValue} {hasDropdownOpened} {selectedOptions}
       {isAndroid} {inputMode}
       bind:this={refInput}
@@ -122,36 +122,21 @@ on:mousedown={focusControl}
       on:paste
     ></Input>
   </div>
-  <!-- buttons, indicators -->
-  <div class="indicator" class:is-loading={isFetchingData} >
-    {#if clearable && !disabled}
-    <div aria-hidden="true" class="indicator-container close-icon"
-      on:mousedown|preventDefault
-      on:click={() => dispatch('deselect')}
-    >
-      <slot name="clear-icon"></slot>
-    </div>
-    {/if}
-    {#if clearable}
-    <span class="indicator-separator"></span>
-    {/if}
-    <div aria-hidden="true" class="indicator-container" on:mousedown={toggleDropdown}>
-      <slot name="indicator-icon" hasDropdownOpened={$hasDropdownOpened}></slot>
-    </div>
-  </div>
   <slot name="control-end"></slot>
 </div>
+<label>{placeholder}</label>
 
 <style>
 .sv-control {
   background-color: var(--sv-bg);
   border: var(--sv-border);
-  border-radius: 4px;
+  border-radius: .375rem;
   min-height: var(--sv-min-height);
 }
 .sv-control.is-active {
-  border: var(--sv-active-border);
+  border-color: var(--sv-active-color);
   outline: var(--sv-active-outline);
+  box-shadow: 0 0 0 .25rem var(--sv-active-color);
 }
 .sv-control.is-disabled {
   background-color: var(--sv-disabled-bg);
@@ -177,6 +162,9 @@ on:mousedown={focusControl}
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+}
+.sv-content-inner {
+  max-width: 100%;
 }
 .sv-content.sv-input-row.has-multiSelection {
   flex-flow: wrap;
@@ -219,6 +207,11 @@ on:mousedown={focusControl}
   top: calc(50% - 10px);
   position: absolute !important;
   box-sizing: border-box;
+}
+
+.form-select {
+  height: unset;
+  min-height: calc(3.5rem + 2px);
 }
 
 @keyframes spinAround {

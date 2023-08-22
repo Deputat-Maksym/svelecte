@@ -3,7 +3,6 @@
 
   export const focus = () => inputRef.focus();
   export let inputId;
-  export let placeholder;
   export let searchable;
   export let disabled;
   export let multiple;
@@ -20,8 +19,7 @@
   const dispatch = createEventDispatcher();
 
   $: isSingleFilled = selectedOptions.length > 0 && multiple === false;
-  $: placeholderText = selectedOptions.length > 0 ? '' : placeholder;
-  $: shadowText = $inputValue || placeholderText;
+  $: shadowText = true;
   $: widthAddition = selectedOptions.length === 0 ? 19 : 12;
   $: inputStyle = `width: ${isSingleFilled ? 2 : shadowWidth + widthAddition}px`;
 	$: enterHint = isSingleFilled ? null : 'enter';
@@ -56,9 +54,9 @@
   disabled={disabled}
   readonly={!searchable}
   id={inputId}
-  style={inputStyle} placeholder={placeholderText}
-  bind:this={inputRef} 
-  bind:value={$inputValue} 
+  style={inputStyle}
+  bind:this={inputRef}
+  bind:value={$inputValue}
   on:focus
   on:blur
   on:input={onInput}

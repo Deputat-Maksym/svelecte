@@ -104,7 +104,7 @@
   export const getSelection = onlyValues => {
     if (!selectedOptions.length) return multiple ? [] : null;
     const _selection = selectedOptions.map(opt => onlyValues
-      ? opt[labelAsValue ? currentLabelField : currentValueField] 
+      ? opt[labelAsValue ? currentLabelField : currentValueField]
       : Object.assign({}, opt));
     return multiple ? _selection : _selection[0];
   };
@@ -298,8 +298,8 @@
     : ($inputValue.length && availableItems.length === 0 && minQuery <= 1
       ? _i18n.nomatch
       : (fetch
-        ? (minQuery <= 1 
-          ? (initFetchOnly 
+        ? (minQuery <= 1
+          ? (initFetchOnly
             ? (isFetchingData
               ? _i18n.fetchInit
               : _i18n.empty
@@ -369,7 +369,7 @@
 
   /**
    * update inner selection, when 'value' property is changed
-   * 
+   *
    * @internal before 3.9.1 it was possible when `valueAsObject` was set to set value OUTSIDE defined options. Fix at
    * 3.9.1 broke manual value setter. Which has been resolved now through #128. Which disables pre 3.9.1 behavior
    *
@@ -409,13 +409,13 @@
     prevValue = passedVal;
   }
 
-  /** 
+  /**
    * Add given option to selection pool
    * Check if not already selected or max item selection reached
-   * 
+   *
    * @returns bool
    */
-  function selectOption(opt) { 
+  function selectOption(opt) {
     if (!opt || (multiple && maxReached)) return false;
     if (selectedKeys.has(opt[currentValueField])) return;
 
@@ -438,7 +438,7 @@
       selectedKeys.clear();
       selectedKeys.add(opt[currentValueField]);
       dropdownActiveIndex = options.indexOf(opt);
-    } 
+    }
     flatItems = flatItems;
     return true;
   }
@@ -681,7 +681,7 @@
   });
 </script>
 
-<div class={`svelecte ${className}`} class:is-disabled={disabled} {style}>
+<div class={`svelecte form-floating ${className}`} class:is-disabled={disabled} {style}>
   <Control bind:this={refControl} renderer={itemRenderer}
     {disabled} {clearable} {searchable} {placeholder} {multiple} inputId={inputId || __id + '_input'} {resetOnBlur} collapseSelection={collapseSelection ? config.collapseSelectionFn.bind(_i18n): null}
     inputValue={inputValue} hasFocus={hasFocus} hasDropdownOpened={hasDropdownOpened} selectedOptions={selectedOptions} {isFetchingData}
@@ -737,7 +737,8 @@
     --sv-min-height: 38px;
     --sv-border-color: #ccc;
     --sv-border: 1px solid var(--sv-border-color);
-    --sv-active-border: 1px solid #555;
+    --sv-active-color: rgba(13,110,253,0.25);
+    --sv-active-border: 1px solid var(--sv-active-border);
     --sv-active-outline: none;
     --sv-disabled-bg: #f2f2f2;
     --sv-disabled-border-color: #e6e6e6;
@@ -762,7 +763,7 @@
   .icon-slot { display: flex; }
   .sv-hidden-element { opacity: 0; position: absolute; z-index: -2; top: 0; height: var(--sv-min-height)}
 
-  /** globally available styles for control/dropdown Item components */    
+  /** globally available styles for control/dropdown Item components */
   :global(.svelecte-control .has-multiSelection .sv-item),
   :global(#dnd-action-dragged-el .sv-item) {
     background-color: var(--sv-item-selected-bg);
@@ -783,7 +784,7 @@
   }
   :global(.svelecte-control .sv-item.is-disabled) { opacity: 0.5; cursor: not-allowed; }
 
-  :global(.svelecte-control .sv-item-content),  
+  :global(.svelecte-control .sv-item-content),
   :global(#dnd-action-dragged-el .sv-item-content) {
     color: var(--sv-item-color, var(--sv-color));
     text-overflow: ellipsis;
