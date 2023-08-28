@@ -98,6 +98,7 @@
   export let labelAsValue = false;
   export let valueAsObject = defaults.valueAsObject;
   export let parentValue = undefined;
+  export let isInvalid = false;
   export const focus = event => {
     refControl.focusControl(event);
   };
@@ -682,7 +683,7 @@
 </script>
 
 <div class={`svelecte form-floating ${className}`} class:is-disabled={disabled} {style}>
-  <Control bind:this={refControl} renderer={itemRenderer}
+  <Control bind:this={refControl} renderer={itemRenderer} {isInvalid}
     {disabled} {clearable} {searchable} {placeholder} {multiple} inputId={inputId || __id + '_input'} {resetOnBlur} collapseSelection={collapseSelection ? config.collapseSelectionFn.bind(_i18n): null}
     inputValue={inputValue} hasFocus={hasFocus} hasDropdownOpened={hasDropdownOpened} selectedOptions={selectedOptions} {isFetchingData}
     {dndzone} {currentValueField} {isAndroid} {isIOS} {alwaysCollapsed}
@@ -736,9 +737,11 @@
     --sv-color: inherit;
     --sv-min-height: 38px;
     --sv-border-color: #ccc;
+    --sv-border-color-invalid: #dc3545;
     --sv-border: 1px solid var(--sv-border-color);
     --sv-active-color: rgba(13,110,253,0.25);
-    --sv-active-border: 1px solid var(--sv-active-border);
+    --sv-active-border-color: #86b7fe;
+    --sv-active-border: 1px solid var(--sv-active-border-color);
     --sv-active-outline: none;
     --sv-disabled-bg: #f2f2f2;
     --sv-disabled-border-color: #e6e6e6;
@@ -787,12 +790,13 @@
   :global(.svelecte-control .sv-item-content),
   :global(#dnd-action-dragged-el .sv-item-content) {
     color: var(--sv-item-color, var(--sv-color));
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
     box-sizing: border-box;
     border-radius: 2px;
     overflow: hidden;
     width: 100%;
+    word-break: break-word;
   }
   :global(.svelecte-control .sv-dd-item-active > .sv-item) {
     background-color: var(--sv-item-active-bg);
@@ -809,6 +813,12 @@
     fill: currentcolor;
     line-height: 1;
     stroke: currentcolor;
-    stroke-width: 0px;
+    stroke-width: 0;
+  }
+  :global(.sv-item) {
+    font-size: 0.8rem;
+  }
+  :global(.sv-dd-item) {
+    font-size: 0.85rem;
   }
 </style>

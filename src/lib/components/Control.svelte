@@ -24,6 +24,7 @@
   export let itemComponent;
   export let isAndroid;
   export let isIOS;
+  export let isInvalid = false;
 
   const flipDurationMs = 100;
 
@@ -94,8 +95,11 @@
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="sv-control form-select" class:is-active={$hasFocus} class:is-disabled={disabled}
-on:mousedown={focusControl}
+<div class="sv-control form-select"
+     class:is-active={$hasFocus}
+     class:is-disabled={disabled}
+     class:is-invalid-select={isInvalid}
+     on:mousedown={focusControl}
 >
   <slot name="icon"></slot>
   <!-- selection & input -->
@@ -129,12 +133,12 @@ on:mousedown={focusControl}
 <style>
 .sv-control {
   background-color: var(--sv-bg);
-  border: var(--sv-border);
+  /*border: var(--sv-border);*/
   border-radius: .375rem;
   min-height: var(--sv-min-height);
 }
 .sv-control.is-active {
-  border-color: var(--sv-active-color);
+  border-color: var(--sv-active-border-color);
   outline: var(--sv-active-outline);
   box-shadow: 0 0 0 .25rem var(--sv-active-color);
 }
@@ -144,9 +148,16 @@ on:mousedown={focusControl}
   cursor: default;
   flex-wrap: wrap;
   justify-content: space-between;
-  outline: currentcolor none 0px !important;
+  outline: currentcolor none 0 !important;
   position: relative;
   transition: all 100ms ease 0s;
+}
+.sv-control.is-invalid-select {
+  border-color: var(--sv-border-color-invalid);
+}
+.sv-control.is-invalid-select.is-active {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 .25rem #dc354540;
 }
 .sv-control {
   display: flex;

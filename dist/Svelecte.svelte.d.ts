@@ -58,6 +58,7 @@ export default class Svelecte extends SvelteComponentTyped<{
     searchable?: boolean;
     disabled?: boolean;
     multiple?: boolean;
+    isInvalid?: boolean;
     clearable?: boolean;
     renderer?: any;
     placeholder?: string;
@@ -156,6 +157,7 @@ declare const __propDef: {
         searchable?: boolean;
         disabled?: boolean;
         multiple?: boolean;
+        isInvalid?: boolean;
         clearable?: boolean;
         renderer?: any;
         placeholder?: string;

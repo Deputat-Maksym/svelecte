@@ -22,6 +22,7 @@ export default class Control extends SvelteComponentTyped<{
     currentValueField: any;
     itemComponent: any;
     isIOS: any;
+    isInvalid?: boolean;
     focusControl?: (event: any) => void;
 }, {
     consider: Event | FocusEvent | UIEvent | ClipboardEvent | ProgressEvent<EventTarget> | KeyboardEvent | AnimationEvent | MouseEvent | InputEvent | CompositionEvent | DragEvent | ErrorEvent | FormDataEvent | PointerEvent | SecurityPolicyViolationEvent | SubmitEvent | TouchEvent | TransitionEvent | WheelEvent;
@@ -64,6 +65,7 @@ declare const __propDef: {
         currentValueField: any;
         itemComponent: any;
         isIOS: any;
+        isInvalid?: boolean;
         focusControl?: (event: any) => void;
     };
     events: {

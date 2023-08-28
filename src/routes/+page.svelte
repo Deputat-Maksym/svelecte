@@ -122,6 +122,7 @@
   <div class="col-3">
     <Svelecte {options}
               labelAsValue={false}
+              isInvalid={false}
               bind:value={langsSelected}
               multiple
               highlightFirstItem={false}
